@@ -1,0 +1,11 @@
+<h2> Your user </h2>
+
+  <ul class="form-group col-sm-4 centered">
+    <li class="form-control"> Username: <%= user.username %> </li>
+    <li class="form-control"> Name: <%= user.name %> </li>
+    <li class="form-control"> Family name: <%= user.familyName %> </li>
+    <li class="form-control"> Role: <%= user.role %> </li>
+    <button class="btn btn-inline btn-info"><a href="/private/users/list">Back to list</a></button> 
+    <button class="btn btn-inline btn-warning"><a href="/private/users/<%= user._id %>/edit">Edit</a></button> 
+    <button class="btn btn-inline btn-danger"><a href="/private/users/<%= user._id %>/delete">Delete</a></button> 
+  </ul>

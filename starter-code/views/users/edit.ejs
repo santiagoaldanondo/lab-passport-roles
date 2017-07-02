@@ -1,0 +1,38 @@
+<h2 class="centered"> Create Your New user </h2>
+
+<form action="/private/users/<%=user._id%>" method="POST">
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="username">Username</label>
+    <input class="form-control" type="text" id="username" name="username" value="<%= user.username%>">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="name">Name</label>
+    <input class="form-control" type="text" name="name" id="name" value="<%= user.name%>">
+  </div>
+
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="familyName">Family Name</label>
+    <input class="form-control" type="text" name="familyName" id="familyName" value="<%= user.familyName%>">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="role">Role</label>
+    <select class="form-control" type="text" name="role" id="role">
+      <option value="Boss">Boss</option>
+      <option value="Developer">Developer</option>
+      <option value="TA">TA</option>
+    </select>
+  </div>
+
+ <button type="submit" class="btn btn-primary center-block btn-submit">Update user</button>
+
+</form>
+
+<script>
+  $("#role").val("<%= user.role %>").find("option[value=" + "<%= user.role %>" +"]").attr('selected', true);
+</script>
+
+

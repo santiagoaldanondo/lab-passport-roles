@@ -1,0 +1,24 @@
+<h2 class="centered"> List of users </h2>
+
+<table class="col-sm-8 table table-hover centered">
+  <tr class="centered">
+    <th class="centered"> Username </th>
+    <th class="centered"> Name </th>
+    <th class="centered"> Family Name </th>
+    <th class="centered"> Role </th>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  <% users.forEach((user) => { %>
+  <tr>
+    <td> <%= user.username %> </td>
+    <td> <%= user.name %> </td>
+    <td> <%= user.familyName %> </td>
+    <td> <%= user.role %> </td>
+    <td> <button class="btn btn-info btn-sm"> <a href="/private/users/<%= user._id %>">Show</a> </td>
+    <td> <button class="btn btn-warning btn-sm"> <a href="/private/users/<%= user._id %>/edit">Edit</a> </td>
+    <td> <button class="btn btn-danger btn-sm"> <a href="/private/users/<%= user._id %>/delete">Delete</a> </td>
+  </tr>
+  <% }) %>
+</table>
