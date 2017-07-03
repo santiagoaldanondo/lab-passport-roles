@@ -1,0 +1,35 @@
+<h2 class="centered"> Create a new course </h2>
+
+<form action="/private/courses" method="POST">
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="name">Name</label>
+    <input class="form-control" type="text" id="name" name="name">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="startingDate">Starting date</label>
+    <input class="form-control" type="date" name="startingDate" id="startingDate">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="endDate">Starting date</label>
+    <input class="form-control" type="date" name="endDate" id="endDate">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="level">Level</label>
+    <select class="form-control" type="text" name="level" id="level">
+      <option value="Beginner">Beginner</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+  </div>
+
+  <div class="checkbox centered">
+    <label><input type="checkbox" name="available">Available</label>
+  </div>
+
+ <button type="submit" class="btn btn-primary center-block btn-submit">Create</button>
+
+</form>
+

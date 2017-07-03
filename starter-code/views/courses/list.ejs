@@ -1,0 +1,26 @@
+<h2 class="centered"> List of courses </h2>
+
+<table class="col-sm-8 table table-hover centered">
+  <tr class="centered">
+    <th class="centered"> Name </th>
+    <th class="centered"> Starting date </th>
+    <th class="centered"> End date </th>
+    <th class="centered"> Level </th>
+    <th class="centered"> Available </th>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+  </tr>
+  <% courses.forEach((course) => { %>
+  <tr>
+    <td> <%= course.name %> </td>
+    <td> <%= moment(course.startingDate).format("LL") %> </td>
+    <td> <%= moment(course.endDate).format("LL") %> </td>
+    <td> <%= course.level %> </td>
+    <td> <%= course.available %> </td>
+    <td> <button class="btn btn-info btn-sm"> <a href="/private/courses/<%= course._id %>">Show</a> </td>
+    <td> <button class="btn btn-warning btn-sm"> <a href="/private/courses/<%= course._id %>/edit">Edit</a> </td>
+    <td> <button class="btn btn-danger btn-sm"> <a href="/private/courses/<%= course._id %>/delete">Delete</a> </td>
+  </tr>
+  <% }) %>
+</table>

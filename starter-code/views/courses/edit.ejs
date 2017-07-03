@@ -1,0 +1,40 @@
+<h2 class="centered"> Edit a course </h2>
+
+<form action="/private/courses/<%= course._id %>" method="POST">
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="name">Name</label>
+    <input class="form-control" type="text" id="name" name="name" value="<%= course.name %>">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="startingDate">Starting date</label>
+    <input class="form-control" type="date" name="startingDate" id="startingDate" value="<%= moment(course.startingDate).format('YYYY-MM-DD') %>">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="endDate">Starting date</label>
+    <input class="form-control" type="date" name="endDate" id="endDate" value="<%= moment(course.endDate).format('YYYY-MM-DD') %>">
+  </div>
+
+  <div class="form-group col-xs-4 centered">
+    <label class="centered" for="level">Level</label>
+    <select class="form-control" type="text" name="level" id="level">
+      <option value="Beginner">Beginner</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+  </div>
+
+  <div class="checkbox centered">
+    <label><input type="checkbox" name="available" value="" id="available">Available</label>
+  </div>
+
+ <button type="submit" class="btn btn-primary center-block btn-submit">Update</button>
+
+
+<script>
+  $("#level").val("<%= course.level %>").find("option[value=" + "<%= course.level %>" +"]").attr('selected', true);
+  $("#available").prop('checked', <%= course.available %>);
+</script>
+
+
