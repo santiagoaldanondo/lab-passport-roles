@@ -37,7 +37,7 @@ const userSchema = new Schema({
 })
 
 // Method to assign permissions depending on the user's role
-userSchema.methods.assignPermissions = function assignPermissions() {
+userSchema.methods.assignPermissions = function assignPermissions () {
   if (this.role === 'Boss') {
     this.permissions = {
       userShow: true,

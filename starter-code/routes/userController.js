@@ -8,7 +8,7 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const bcryptSalt = 10
 
-// private/users get. Show users root
+// private/users get. Show users root (available for all authenticated)
 router.get('/', (req, res, next) => {
   res.render('users/index', {
     currentUser: req.user
