@@ -9,6 +9,7 @@ const flash = require('connect-flash')
 const app = express()
 
 const siteController = require('./routes/siteController')
+const privateController = require('./routes/privateController')
 const userController = require('./routes/userController')
 const courseController = require('./routes/courseController')
 
@@ -146,8 +147,21 @@ passport.use(new LocalStrategy((username, password, next) => {
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Definition of middleware to check authentication
+function ensureAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  } else {
+    res.redirect('/login')
+  }
+}
+
 // require the routers
 app.use('/', siteController)
+
+// require authentication for the private routes
+app.use(ensureAuthenticated)
+app.use('/private', privateController)
 app.use('/private/users', userController)
 app.use('/private/courses', courseController)
 

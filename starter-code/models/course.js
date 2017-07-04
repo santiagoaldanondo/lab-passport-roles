@@ -10,6 +10,11 @@ const courseSchema = new Schema({
     enum: ['Beginner', 'Advanced']
   },
   available: Boolean
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 })
 
 const Course = mongoose.model('Course', courseSchema)

@@ -13,29 +13,6 @@ const bcryptSalt = 10
 const ensureLogin = require('connect-ensure-login')
 const passport = require('passport')
 
-// Definition of middlewares to check authentication and roles
-function ensureAuthenticated (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  } else {
-    res.redirect('/login')
-  }
-}
-
-function checkRoles (role) {
-  return function (req, res, next) {
-    if (req.isAuthenticated() && req.user.role === role) {
-      return next()
-    } else {
-      res.redirect('/login')
-    }
-  }
-}
-
-const checkBoss = checkRoles('Boss')
-const checkDeveloper = checkRoles('Developer')
-const checkTA = checkRoles('TA')
-
 // // Signup get
 // router.get('/signup', (req, res, next) => {
 //   res.render('auth/signup', {
@@ -146,13 +123,6 @@ router.get('/logout', (req, res) => {
 router.post('/logout', (req, res) => {
   req.logout()
   res.redirect('/login')
-})
-
-// Private root get
-router.get('/private', ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render('private/index', {
-    currentUser: req.user
-  })
 })
 
 module.exports = router
