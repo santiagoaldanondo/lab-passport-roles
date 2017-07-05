@@ -82,7 +82,10 @@ passport.use(new FbStrategy({
     }
     const newUser = new User({
       facebookID: profile.id,
-      username: profile.displayName
+      username: profile.displayName,
+      name: profile.name.givenName || null,
+      familyName: profile.name.familyName || null,
+      role: 'Student'
     })
 
     newUser.save((err) => {
@@ -110,7 +113,10 @@ passport.use(new GoogleStrategy({
     }
     const newUser = new User({
       googleID: profile.id,
-      username: profile.displayName
+      username: profile.displayName,
+      name: profile.name.givenName || null,
+      familyName: profile.name.familyName || null,
+      role: 'Student'
     })
 
     newUser.save((err) => {

@@ -4,8 +4,12 @@
     <li>
       <a href="/private/courses/list"> List of courses </a>
     </li>
-    <li>
-      <a href="/private/courses/new"> Create new course </a>
-    </li>
+
+    <% if (currentUser.permissions.courseNew) { %>
+      <li>
+        <a href="/private/courses/new"> Create new course </a>
+      </li>
+    <% } %>
+
   </ul>
 </nav>

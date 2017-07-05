@@ -18,21 +18,28 @@
     <input class="form-control" type="text" name="familyName" id="familyName" value="<%= user.familyName%>">
   </div>
 
-  <div class="form-group col-xs-4 centered">
-    <label class="centered" for="role">Role</label>
-    <select class="form-control" type="text" name="role" id="role">
-      <option value="Boss">Boss</option>
-      <option value="Developer">Developer</option>
-      <option value="TA">TA</option>
-    </select>
-  </div>
+  <% if (currentUser.permissions.userEdit) { %>
+
+    <div class="form-group col-xs-4 centered">
+      <label class="centered" for="role">Role</label>
+      <select class="form-control" type="text" name="role" id="role">
+        <option value="Boss">Boss</option>
+        <option value="Developer">Developer</option>
+        <option value="TA">TA</option>
+      </select>
+    </div>
+
+    <script>
+      $("#role").val("<%= user.role %>").find("option[value=" + "<%= user.role %>" +"]").attr('selected', true);
+    </script>
+  
+  <% } %>
+
 
  <button type="submit" class="btn btn-primary center-block btn-submit">Update</button>
 
 </form>
 
-<script>
-  $("#role").val("<%= user.role %>").find("option[value=" + "<%= user.role %>" +"]").attr('selected', true);
-</script>
+
 
 

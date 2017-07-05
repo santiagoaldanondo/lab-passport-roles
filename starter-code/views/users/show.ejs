@@ -6,6 +6,13 @@
     <li class="form-control"> Family name: <%= user.familyName %> </li>
     <li class="form-control"> Role: <%= user.role %> </li>
     <button class="btn btn-inline btn-info"><a href="/private/users/list">Back to list</a></button> 
-    <button class="btn btn-inline btn-warning"><a href="/private/users/<%= user._id %>/edit">Edit</a></button> 
-    <button class="btn btn-inline btn-danger"><a href="/private/users/<%= user._id %>/delete">Delete</a></button> 
+
+    <% if (currentUser.permissions.userEdit || currentUser._id.toString() === user._id.toString()) { %>
+      <button class="btn btn-inline btn-warning"><a href="/private/users/<%= user._id %>/edit">Edit</a></button> 
+    <% } %>
+    
+    <% if (currentUser.permissions.userDelete) { %>
+      <button class="btn btn-inline btn-danger"><a href="/private/users/<%= user._id %>/delete">Delete</a></button> 
+    <% } %>
+  
   </ul>

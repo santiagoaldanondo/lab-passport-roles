@@ -4,8 +4,14 @@
     <li>
       <a href="/private/users/list"> List of users </a>
     </li>
-    <li>
-      <a href="/private/users/new"> Create new user </a>
-    </li>
+
+    <% if (currentUser.permissions.userNew) { %>
+    
+      <li>
+        <a href="/private/users/new"> Create new user </a>
+      </li>
+    
+    <% } %>
+
   </ul>
 </nav>

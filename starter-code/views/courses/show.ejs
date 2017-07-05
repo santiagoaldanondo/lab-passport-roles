@@ -1,12 +1,19 @@
 <h2 class="centered"> Your course </h2>
 
-  <ul class="form-group col-sm-4 centered">
-    <li class="form-control"> Name: <%= course.name %> </li>
-    <li class="form-control"> Starting date: <%= moment(course.startingDate).format("LL") %> </li>
-    <li class="form-control"> End date: <%= moment(course.endDate).format("LL") %> </li>
-    <li class="form-control"> Level: <%= course.level %> </li>
-    <li class="form-control"> Available: <%= course.available %> </li> 
-    <button class="btn btn-inline btn-info"><a href="/private/courses/list">Back to list</a></button> 
+<ul class="form-group col-sm-4 centered">
+  <li class="form-control"> Name: <%= course.name %> </li>
+  <li class="form-control"> Starting date: <%= moment(course.startingDate).format("LL") %> </li>
+  <li class="form-control"> End date: <%= moment(course.endDate).format("LL") %> </li>
+  <li class="form-control"> Level: <%= course.level %> </li>
+  <li class="form-control"> Available: <%= course.available %> </li> 
+  <button class="btn btn-inline btn-info"><a href="/private/courses/list">Back to list</a></button> 
+  
+  <% if (currentUser.permissions.courseEdit) { %>
     <button class="btn btn-inline btn-warning"><a href="/private/courses/<%= course._id %>/edit">Edit</a></button> 
+  <% } %>
+
+  <% if (currentUser.permissions.courseDelete) { %>
     <button class="btn btn-inline btn-danger"><a href="/private/courses/<%= course._id %>/delete">Delete</a></button> 
-  </ul>
+  <% } %>
+
+</ul>

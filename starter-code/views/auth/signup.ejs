@@ -1,3 +1,5 @@
+<% if (!currentUser) { %>
+
 <form method="post" action="/signup">
     
     <div class="form-group col-xs-4 centered">
@@ -20,3 +22,9 @@
     <p class="centered">Already have an account? <a href="/login">Login</p>
 
 </form>
+
+<% } else {%>
+    <p>You are already signed in as <%= currentUser.username %>. 
+        <a href="/private">Click here to go to your private area</a>
+    </p> 
+<% } %>

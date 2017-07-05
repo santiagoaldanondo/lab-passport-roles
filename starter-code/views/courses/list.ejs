@@ -19,8 +19,15 @@
     <td> <%= course.level %> </td>
     <td> <%= course.available %> </td>
     <td> <button class="btn btn-info btn-sm"> <a href="/private/courses/<%= course._id %>">Show</a> </td>
-    <td> <button class="btn btn-warning btn-sm"> <a href="/private/courses/<%= course._id %>/edit">Edit</a> </td>
-    <td> <button class="btn btn-danger btn-sm"> <a href="/private/courses/<%= course._id %>/delete">Delete</a> </td>
+      
+    <% if (currentUser.permissions.courseEdit) { %>
+      <td> <button class="btn btn-warning btn-sm"> <a href="/private/courses/<%= course._id %>/edit">Edit</a> </td>
+    <% } %>
+
+    <% if (currentUser.permissions.courseDelete) { %>
+      <td> <button class="btn btn-danger btn-sm"> <a href="/private/courses/<%= course._id %>/delete">Delete</a> </td>
+    <% } %>
+    
   </tr>
   <% }) %>
 </table>
